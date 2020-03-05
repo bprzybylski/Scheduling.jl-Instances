@@ -75,13 +75,13 @@ for n in N, m in M, a in A, b in B, d in D
 
             jpt = Vector{Rational{Int}}()
 
-            # 98% of jobs should be in the [0.9(b−a), b] interval
-            # 2% of jobs should be in the [a, 0.2(b-a)] interval
+            # 98% of jobs should be in the [a + 0.9(b−a), b] interval
+            # 2% of jobs should be in the [a, a + 0.2(b-a)] interval
             for j in 1:n
                 if rand() >= 0.98
-                    push!(jpt, rand(Int(ceil(9//10 * (b-a)))*d:b*d)//d)
+                    push!(jpt, rand((a + Int(ceil(9//10 * (b-a))))*d:b*d)//d)
                 else
-                    push!(jpt, rand(a*d:Int(ceil(2//10 * (b-a)))*d)//d)
+                    push!(jpt, rand(a*d:(a + Int(ceil(2//10 * (b-a))))*d)//d)
                 end
             end
 
