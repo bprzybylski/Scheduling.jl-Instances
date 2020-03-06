@@ -50,11 +50,11 @@ for p in P, n in N, m in M, a in A, b in B, d in D
 
                 # Solve the instance only if it is not solved yet
                 if length(S.assignments) > 0
-                    println("    Instance already solved with Cmax = $(Int(cmax(S)))")
+                    println("    Instance already solved with Cmax = $(float(cmax(S)))")
                 else
                     # Solve and store the schedule
                     S = Algorithms.P__Cmax_IP(S.jobs, S.machines)
-                    println("    Solved now with Cmax = $(Int(cmax(S)))")
+                    println("    Solved now with Cmax = $(float(cmax(S)))")
                     Scheduling.save(S, "$(output_dir)$(fname).jdl")
                 end
             end
